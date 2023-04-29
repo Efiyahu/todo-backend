@@ -7,6 +7,7 @@ interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  avatar: string;
   createJWT: () => string;
   comparePassword: (candidatePassword: string) => Promise<boolean>;
 }
@@ -35,6 +36,9 @@ const UserSchema = new mongoose.Schema<IUser>({
     required: [true, 'Please provide Password'],
     minlength: 6,
     select: false,
+  },
+  avatar: {
+    type: String,
   },
 });
 
